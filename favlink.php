@@ -5,7 +5,7 @@
  * Description: Shortcode [favlink url="" text="" size=""]. Renders a site favicon + link text.
  *              • `size` omitted → icon auto-scales to the surrounding font-size (incl. Gutenberg presets).
  *              • Handles theme quirks that shove first-child links left, guarantees icon obeys font sizing.
- * Version:     1.4.0
+ * Version:     1.4.1
  * Author:      John Shedletsky
  * License:     GPL-2.0+
  */
@@ -66,7 +66,7 @@ final class Favlink {
 
 		// Build optional explicit dimensions.
 		$dim_attr = '';
-		$style    = '';
+		$style    = ' style="height:1em!important;width:auto!important"';
 		if ( $size_num > 0 ) {
 			$dim_attr = sprintf( ' width="%1$d" height="%1$d"', $size_num );
 			// Add inline style to overrule any !important rules from themes/minifiers.
@@ -95,7 +95,7 @@ final class Favlink {
 		if ( ! self::$needs_css ) {
 			return;
 		}
-		wp_enqueue_style( 'favlink-style', false, [], '1.4.0' );
+		wp_enqueue_style( 'favlink-style', false, [], '1.4.1' );
 		wp_add_inline_style( 'favlink-style', self::build_css() );
 	}
 
@@ -106,7 +106,7 @@ final class Favlink {
 		if ( ! self::$needs_css ) {
 			return;
 		}
-		wp_enqueue_style( 'favlink-editor-style', false, [], '1.4.0' );
+		wp_enqueue_style( 'favlink-editor-style', false, [], '1.4.1' );
 		wp_add_inline_style( 'favlink-editor-style', self::build_css( true ) );
 	}
 
